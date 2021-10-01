@@ -38,7 +38,7 @@ class IssuesTreesController < ApplicationController
                    issue_id_template: issue_id_template,
                    query_params: query_params }
 
-    @issues_ids = @query.issues.collect(&:id)
+    @issues_ids = @query.issue_ids
 
     if @issues_ids.present?
       # selecting a root elements for a current query

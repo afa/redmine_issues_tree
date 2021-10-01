@@ -1,5 +1,4 @@
-- @issues.each do |issue|
-  = render partial: 'tree_node',
-           locals: {issue: issue,
-                    query: @query,
-                    issues_ids: @issues_ids}
+= render partial: 'tree_node',
+         collection: @issues,
+         locals: {query: @query,
+                  issues_ids: @issues_ids}
