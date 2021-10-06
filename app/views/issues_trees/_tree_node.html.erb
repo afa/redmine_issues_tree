@@ -1,6 +1,6 @@
 <tr id="issue-<%= tree_node.id -%>" class="hascontextmenu <%= cycle('odd', 'even') %> <%= tree_node.css_classes %>"
     data-tt-id="<%= tree_node.id %>"
-    data-tt-branch="<%= tree_node.children.where(id: issues_ids).any? ? 'true' : 'false' %>"
+    data-tt-branch="<%= !(tree_node.leaf? || tree_node.children.where(id: issues_ids).limit(1).pluck(:id).empty?) ? 'true' : 'false' %>"
     data-tt-parent-id="<%= tree_node.parent_id %>">
   <td class="checkbox hide-when-print"><%= check_box_tag("ids[]", tree_node.id, false, :id => nil) %></td>
   <td class="id"><%= link_to tree_node.to_param, controller: 'issues', action: 'show', id: tree_node %></td>

@@ -39,6 +39,7 @@ class IssuesTreesController < ApplicationController
                    query_params: query_params }
 
     @issues_ids = @query.issue_ids
+    logger.info "ids #{@issues_ids.size}"
 
     if @issues_ids.present?
       # selecting a root elements for a current query
@@ -57,7 +58,7 @@ class IssuesTreesController < ApplicationController
 
     # group action is incompatible with tree view, so remove group_by option
     @query.group_by = nil if @query.group_by.present?
-    @issues_ids = @query.issues.collect(&:id)
+    @issues_ids = @query.issue_ids
     @issues = @query.issues(conditions: "issues.parent_id = #{params[:id]}")
 
     render layout: false

@@ -1,4 +1,5 @@
 require_dependency 'redmine_issues_tree/hook_listener'
+# ActiveRecord::Base.logger = ActiveSupport::Logger.new(Rails.root.join('log', 'stdout.log'))
 
 plugin_name = :redmine_issues_tree
 
